@@ -1,0 +1,5 @@
+export const CARD_DETAILS = "CARD_DETAILS"
+export const AUTHENTICATION = "AUTHENTICATION"
+export const ACCOUNT_NUMBER = "ACCOUNT_NUMBER"
+export const DEPOSIT = "DEPOSIT"
+export const WITHDRAW = "WITHDRAW"
