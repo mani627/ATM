@@ -44,11 +44,15 @@ const WithdrawStatus = (props) => {
     }
 
     return (
-        <div>
-            <h1>Withdraw Status</h1>
-            <h3>Available Balance : {Number(isValidBalance).toFixed(2)}</h3>
-            <h3>{withdrawStatus}</h3>
-            <button onClick={handleOkayButton}>Ok</button>
+        <div className="bg-[#062C30] h-[100vh] flex flex-col border-2  border-white items-center">
+            <div className="text-3xl text-[#E2D784] mt-10 font-medium">Withdraw Status</div>
+            <div className="text-[#F5F5F5] text-lg mt-5 font-medium">Available Balance : {Number(isValidBalance).toFixed(2)}</div>
+            <div className="text-[#F5F5F5] text-xl mt-5 font-medium">{withdrawStatus}</div>
+            <div className="mt-5">
+                <button class="bg-[#E1EEDD] hover:bg-[#BAD1C2] text-gray-800 font-bold py-2 px-4 rounded" onClick={handleOkayButton}>
+                    Ok
+                </button>
+            </div>
         </div>
     )
 }

@@ -13,12 +13,8 @@ const DepositAuthentication = (props) => {
     const [pinValidation, setPinValidation] = useState("")
 
     const handleContinue = () => {
-        const numberRegex = /^\d+$/
         if (pinNumber === "") {
             setPinValidation("Please enter Pin Number")
-        }
-        else if (!numberRegex.test(pinNumber)) {
-            setPinValidation("Please enter numbers only")
         }
         else {
             setPinValidation("")
@@ -56,12 +52,18 @@ const DepositAuthentication = (props) => {
     }
 
     return (
-        <div>
-            <h1>Deposit</h1>
-            <h3>Deposit Amount : {displayDepositAmount}</h3>
-            Enter Pin : <input type="text" maxLength={4} onChange={(e) => setPinNumber(e.target.value)} />
-            <div>{pinValidation}</div>
-            <button onClick={handleContinue}>Continue</button>
+        <div className="bg-[#062C30] h-[100vh] flex flex-col border-2  border-white items-center">
+            <div className="text-3xl text-[#E2D784] mt-10 font-medium">Deposit</div>
+            <div className="text-[#F5F5F5] text-lg mt-5 font-medium">Deposit Amount : {displayDepositAmount}</div>
+            <div className="text-[#F5F5F5] text-xl mt-5 font-medium">Enter the Pin</div>
+            <input value={pinNumber} className="mt-5 font-medium text-[#F5F5F5] bg-[#05595B] p-3 w-[20%] max-md:w-[50%] border-2 border-white rounded text-center" type="text" onChange={(e) => setPinNumber(e.target.value.replace(/\D/g, ""))} maxLength={"4"} />
+            <div className="mt-5 text-[#E6DDC4] font-medium">{pinValidation}</div>
+
+            <div className="mt-5">
+                <button class="bg-[#E1EEDD] hover:bg-[#BAD1C2] text-gray-800 font-bold py-2 px-4 rounded" onClick={handleContinue}>
+                    Continue
+                </button>
+            </div>
         </div>
     )
 }

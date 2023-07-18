@@ -60,15 +60,19 @@ const Withdraw = (props) => {
     })
 
     return (
-        <div>
-            <h1>Withdraw</h1>
-            <label>Enter the amount to withdraw</label>
-            <input value={withdrawDetails.withdrawAmount} type="text" onChange={(e) => setWithdrawDetails({ ...withdrawDetails, withdrawAmount: e.target.value.replace(/\D/g, "") })} />
-            <div>{withdrawValidation.withdrawAmountValidation}</div>
-            <label>Enter the Pin</label>
-            <input value={withdrawDetails.pinNumber} type="text" maxLength={4} onChange={(e) => setWithdrawDetails({ ...withdrawDetails, pinNumber: e.target.value.replace(/\D/g, "") })} />
-            <div>{withdrawValidation.pinNumberValidation}</div>
-            <button onClick={handleWithdrawAction}>Continue</button>
+        <div className="bg-[#062C30] h-[100vh] flex flex-col border-2  border-white items-center">
+            <div className="text-3xl text-[#E2D784] mt-10 font-medium">Withdraw</div>
+            <div className="text-[#F5F5F5] text-xl mt-5 font-medium">Enter the amount to withdraw</div>
+            <input value={withdrawDetails.withdrawAmount} className="mt-5 font-medium text-[#F5F5F5] bg-[#05595B] p-3 w-[20%] max-md:w-[50%] border-2 border-white rounded text-center" type="text" maxLength={5} onChange={(e) => setWithdrawDetails({ ...withdrawDetails, withdrawAmount: e.target.value.replace(/\D/g, "") })} />
+            <div className="mt-5 text-[#E6DDC4] font-medium">{withdrawValidation.withdrawAmountValidation}</div>
+            <div className="text-[#F5F5F5] text-xl mt-5 font-medium">Enter the Pin</div>
+            <input value={withdrawDetails.pinNumber} className="mt-5 font-medium text-[#F5F5F5] bg-[#05595B] p-3 w-[20%] max-md:w-[50%] border-2 border-white rounded text-center" type="text" maxLength={4} onChange={(e) => setWithdrawDetails({ ...withdrawDetails, pinNumber: e.target.value.replace(/\D/g, "") })} />
+            <div className="mt-5 text-[#E6DDC4] font-medium">{withdrawValidation.pinNumberValidation}</div>
+            <div className="mt-5">
+                <button class="bg-[#E1EEDD] hover:bg-[#BAD1C2] text-gray-800 font-bold py-2 px-4 rounded" onClick={handleWithdrawAction}>
+                    Continue
+                </button>
+            </div>
         </div>
     )
 }
