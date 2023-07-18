@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { accountNumber, authentication } from "../redux/actionCreator";
-// import '../App.css';
+import cardLogo from "../assets/images/insert_card.jpg"
 import '../index.css'
-
-
-
 const Authentication = (props) => {
 
     const { history } = props
@@ -23,12 +20,8 @@ const Authentication = (props) => {
     }, [])
 
     const handleCardValidation = () => {
-        const numberRegex = /^\d+$/
         if (inputCardNumber === "") {
             setCardNumberValidation("Please enter the Account Number")
-        }
-        else if (!numberRegex.test(inputCardNumber)) {
-            setCardNumberValidation("Please enter numbers only")
         }
         else {
             setCardNumberValidation("")
@@ -54,20 +47,17 @@ const Authentication = (props) => {
     }
 
     return (
-        <div className=" bg-teal-400 h-[100vh] flex flex-col items-center">
-            <h1 className="text-3xl">Welcome Page</h1>
-           
-            <div>
-                <h3>Insert your Card</h3>
+        <div className="bg-[#062C30] h-[100vh] flex flex-col items-center border-2 border-white ">
+            <div className="text-3xl text-[#E2D784] mt-10 font-medium">Welcome Page</div>
+            <div className="text-[#F5F5F5] text-xl mt-5 font-medium">Insert your Card</div>
+            <input value={inputCardNumber} className="mt-5 font-medium text-[#F5F5F5] bg-[#05595B] p-3 w-[20%] max-md:w-[50%] border-2 border-white rounded text-center" type="text" onChange={(e) => setCardNumber(e.target.value.replace(/\D/g, ""))} maxLength={"14"} />
+            <div className="mt-5 text-[#E6DDC4] font-medium">{cardNumberValidation}</div>
+            <img className="mt-5" src={cardLogo} width={"300px"} height={"250px"}/>
+            <div className="mt-5">
+                <button class="bg-[#E1EEDD] hover:bg-[#BAD1C2] text-gray-800 font-bold py-2 px-4 rounded" onClick={handleCardValidation}>
+                    Continue
+                </button>
             </div>
-            <div>
-                <input type="text" onChange={(e) => setCardNumber(e.target.value)} maxLength={"14"} />
-            </div>
-            <div>{cardNumberValidation}</div>
-            <div>
-                <button onClick={handleCardValidation}>Continue</button>
-            </div>
-    
         </div>
     )
 }

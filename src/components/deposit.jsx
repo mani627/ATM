@@ -5,41 +5,11 @@ import { deposit } from "../redux/actionCreator"
 const Deposit = (props) => {
 
     const { history } = props
-    const numberRegex = /^[0-9\s]*$/
     const dispatch = useDispatch()
     const [emptyValidation, setEmptyValidation] = useState("")
     const [depositAmount, setDepositAmount] = useState({ fiveHundredNote: "", twoHundredNote: "", oneHundredNote: "" })
-    const [depositErrorValidation, setDepositValidation] = useState({ fiveHundredNoteValidation: "", twoHundredNoteValidation: "", oneHundredNoteValidation: "" })
-
-    const handleValidation = () => {
-        const isValid = { ...depositErrorValidation }
-        let flag = true;
-        Object.keys(depositAmount).forEach(keys => {
-            const values = depositAmount[keys]
-            if (keys === "fiveHundredNote" && !numberRegex.test(values)) {
-                isValid[keys + "Validation"] = "Please enter numbers only"
-                flag = false
-            }
-            else if (keys === "twoHundredNote" && !numberRegex.test(values)) {
-                isValid[keys + "Validation"] = "Please enter numbers only"
-                flag = false
-            }
-            else if (keys === "oneHundredNote" && !numberRegex.test(values)) {
-                isValid[keys + "Validation"] = "Please enter numbers only"
-                flag = false
-            }
-            else {
-                isValid[keys + "Validation"] = ''
-            }
-        }
-        )
-        setDepositValidation(isValid)
-        return flag
-    }
 
     const handleContinue = () => {
-        const flag = handleValidation()
-        if (flag) {
             if ((depositAmount.fiveHundredNote === "" || depositAmount.fiveHundredNote === "0") && (depositAmount.twoHundredNote === "" || depositAmount.twoHundredNote === "0") && (depositAmount.oneHundredNote === "" || depositAmount.oneHundredNote === "0")) {
                 setEmptyValidation("Please fill any one of the denomination")
             }
@@ -52,21 +22,24 @@ const Deposit = (props) => {
                     history.push("./depositAuthentication")
                 }
             }
-        }
     }
 
     return (
-        <div>
-            <h1>Deposit</h1>
-            <h3>Enter the amount you want to deposit</h3>
-            500 x <input type="text" onChange={(e) => setDepositAmount({ ...depositAmount, fiveHundredNote: e.target.value })} maxLength={"2"} />
-            <div>{depositErrorValidation.fiveHundredNoteValidation}</div>
-            200 x <input type="text" onChange={(e) => setDepositAmount({ ...depositAmount, twoHundredNote: e.target.value })} maxLength={"2"} />
-            <div>{depositErrorValidation.twoHundredNoteValidation}</div>
-            100 x <input type="text" onChange={(e) => setDepositAmount({ ...depositAmount, oneHundredNote: e.target.value })} maxLength={"2"} />
-            <div>{depositErrorValidation.oneHundredNoteValidation}</div>
-            <button onClick={handleContinue}>Continue</button>
-            <div>{emptyValidation}</div>
+        <div className="bg-[#062C30] h-[100vh] flex flex-col border-2  border-white items-center">
+            <div className="text-3xl text-[#E2D784] mt-10 font-medium">Deposit</div>
+            <div className="text-[#F5F5F5] text-xl mt-5 font-medium">Enter the amount you want to deposit</div>
+            <div className="text-[#F5F5F5] text-xl mt-5 font-medium">500 x</div>
+            <input value={depositAmount.fiveHundredNote} className="mt-5 font-medium text-[#F5F5F5] bg-[#05595B] p-3 w-[20%] max-md:w-[50%] border-2 border-white rounded text-center" type="text" onChange={(e) => setDepositAmount({ ...depositAmount, fiveHundredNote: e.target.value.replace(/\D/g, "") })} maxLength={"2"} />
+            <div className="text-[#F5F5F5] text-xl mt-5 font-medium">200 x</div>
+            <input value={depositAmount.twoHundredNote} className="mt-5 font-medium text-[#F5F5F5] bg-[#05595B] p-3 w-[20%] max-md:w-[50%] border-2 border-white rounded text-center" type="text" onChange={(e) => setDepositAmount({ ...depositAmount, twoHundredNote: e.target.value.replace(/\D/g, "") })} maxLength={"2"} />
+            <div className="text-[#F5F5F5] text-xl mt-5 font-medium">100 x</div>
+            <input value={depositAmount.oneHundredNote} className="mt-5 font-medium text-[#F5F5F5] bg-[#05595B] p-3 w-[20%] max-md:w-[50%] border-2 border-white rounded text-center" type="text" onChange={(e) => setDepositAmount({ ...depositAmount, oneHundredNote: e.target.value.replace(/\D/g, "") })} maxLength={"2"} />
+            <div className="mt-5">
+                <button class="bg-[#E1EEDD] hover:bg-[#BAD1C2] text-gray-800 font-bold py-2 px-4 rounded" onClick={handleContinue}>
+                    Continue
+                </button>
+            </div>
+            <div className="mt-5 text-[#E6DDC4] font-medium">{emptyValidation}</div>
         </div>
     )
 }
