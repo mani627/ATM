@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { authentication, withdraw } from "../redux/actionCreator"
+import { accountNumber, authentication, withdraw } from "../redux/actionCreator"
 
 const Withdraw = (props) => {
 
@@ -56,8 +56,10 @@ const Withdraw = (props) => {
         if (displayWithdrawAmount !== 0) {
             dispatch(withdraw(0))
             dispatch(authentication(false))
+            dispatch(accountNumber(""))
+            history.push("/")
         }
-    })
+    },[])
 
     return (
         <div className="bg-[#062C30] h-[100vh] flex flex-col border-2  border-white items-center">

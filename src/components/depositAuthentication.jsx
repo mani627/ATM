@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { authentication, getCardDetails } from "../redux/actionCreator"
+import { accountNumber, authentication, getCardDetails } from "../redux/actionCreator"
 
 const DepositAuthentication = (props) => {
 
@@ -25,6 +25,8 @@ const DepositAuthentication = (props) => {
     useEffect(() => {
         if (displayDepositAmount === 0) {
             dispatch(authentication(false))
+            dispatch(accountNumber(""))
+            history.push("/")
         }
     }, [])
 
