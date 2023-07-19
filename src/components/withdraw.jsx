@@ -68,7 +68,7 @@ const Withdraw = (props) => {
             <input value={withdrawDetails.withdrawAmount} className="mt-5 font-medium text-[#F5F5F5] bg-[#05595B] p-3 w-[20%] max-md:w-[50%] border-2 border-white rounded text-center" type="text" maxLength={5} onChange={(e) => setWithdrawDetails({ ...withdrawDetails, withdrawAmount: e.target.value.replace(/\D/g, "") })} />
             <div className="mt-5 text-[#E6DDC4] font-medium">{withdrawValidation.withdrawAmountValidation}</div>
             <div className="text-[#F5F5F5] text-xl mt-5 font-medium">Enter the Pin</div>
-            <input value={withdrawDetails.pinNumber} className="mt-5 font-medium text-[#F5F5F5] bg-[#05595B] p-3 w-[20%] max-md:w-[50%] border-2 border-white rounded text-center" type="text" maxLength={4} onChange={(e) => setWithdrawDetails({ ...withdrawDetails, pinNumber: e.target.value.replace(/\D/g, "") })} />
+            <input value={withdrawDetails.pinNumber} className="mt-5 font-medium text-[#F5F5F5] bg-[#05595B] p-3 w-[20%] max-md:w-[50%] border-2 border-white rounded text-center" type="password" maxLength={4} onChange={(e) => setWithdrawDetails({ ...withdrawDetails, pinNumber: e.target.value.replace(/\D/g, "") })} />
             <div className="mt-5 text-[#E6DDC4] font-medium">{withdrawValidation.pinNumberValidation}</div>
             <div className="mt-5">
                 <button class="bg-[#E1EEDD] hover:bg-[#BAD1C2] text-gray-800 font-bold py-2 px-4 rounded" onClick={handleWithdrawAction}>
