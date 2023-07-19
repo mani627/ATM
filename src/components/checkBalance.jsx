@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { accountNumber, authentication } from "../redux/actionCreator"
 
 const CheckBalance = (props) => {
-    const { history } = props
+    const { history } = props;
+    //useDispatch
     const dispatch=useDispatch()
     const accNo = useSelector(state => state.accountNumber)
     const cardDetails = useSelector(state => state.cards)
