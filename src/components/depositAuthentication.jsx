@@ -58,7 +58,7 @@ const DepositAuthentication = (props) => {
             <div className="text-3xl text-[#E2D784] mt-10 font-medium">Deposit</div>
             <div className="text-[#F5F5F5] text-lg mt-5 font-medium">Deposit Amount : {displayDepositAmount}</div>
             <div className="text-[#F5F5F5] text-xl mt-5 font-medium">Enter the Pin</div>
-            <input value={pinNumber} className="mt-5 font-medium text-[#F5F5F5] bg-[#05595B] p-3 w-[20%] max-md:w-[50%] border-2 border-white rounded text-center" type="text" onChange={(e) => setPinNumber(e.target.value.replace(/\D/g, ""))} maxLength={"4"} />
+            <input value={pinNumber} className="mt-5 font-medium text-[#F5F5F5] bg-[#05595B] p-3 w-[20%] max-md:w-[50%] border-2 border-white rounded text-center" type="password" onChange={(e) => setPinNumber(e.target.value.replace(/\D/g, ""))} maxLength={"4"} />
             <div className="mt-5 text-[#E6DDC4] font-medium">{pinValidation}</div>
 
             <div className="mt-5">

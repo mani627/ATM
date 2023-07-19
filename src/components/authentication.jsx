@@ -8,7 +8,6 @@ const Authentication = (props) => {
     const { history } = props
     const cardDetails = useSelector(state => state.cards)
     const accountDetails = useSelector(state => state.accountNumber)
-    console.log("accountDetails", accountDetails)
     const dispatch = useDispatch()
     const [inputCardNumber, setCardNumber] = useState("")
     const [cardNumberValidation, setCardNumberValidation] = useState("")

@@ -8,12 +8,12 @@ import WithdrawStatus from '../components/withdrawStatus'
 import DepositSuccess from '../components/depositSuccess'
 import Authentication from '../components/authentication'
 import DepositAuthentication from '../components/depositAuthentication'
+import CheckBalance from '../components/checkBalance'
 
 const RouterShell = () => {
 
     const authentication = useSelector(state => state.auth)
-    console.log("auth", authentication)
-
+   
     return (
         <Router>
             {!authentication ? (
@@ -31,6 +31,7 @@ const RouterShell = () => {
                         <Route path='/depositSuccess' component={DepositSuccess} />
                         <Route path='/withdraw' component={Withdraw} />
                         <Route path='/withdrawStatus' component={WithdrawStatus} />
+                        <Route path='/checkBalance' component={CheckBalance} />
                     </Switch>
                 )
             }
